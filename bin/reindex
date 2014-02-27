@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+var debug = require('debug')('bin:reindex');
+var doc = require('../lib/doc');
+var reindex = require('../lib/reindex');
+
+var argv = require('optimist')
+    .alias('h', 'help')
+    .alias('v', 'version')
+    .default('host', 'http://localhost:9200')
+    .alias('m', 'max-retries')
+    .alias('t', 'request-timeout')
+    .boolean('verbose')
+    .argv;
+
+debug(JSON.stringify(argv));
+
+if (argv.help) {
+  console.log(doc('help'));
+  process.exit();
+}
+
+if (argv.version) {
+  console.log(require('../package.json').version);
+  process.exit();
+}
+
+if (!argv._.length) {
+  console.log('reindex: missing source index');
+  console.log(doc('help'));
+  process.exit(1);
+}
+
+var options = {
+  srcIndex: argv._[0],
+  dstIndex: argv._[1],
+  maxRetries: argv['max-retries'],
+  requestTimeout: argv['request-timeout']
+};
+
+if (argv.host) {
+  var hosts = argv.host.split(',');
+  options.srcHost = hosts[0];
+  options.dstHost = hosts[1];
+}
+
+debug(JSON.stringify(options));
+
+process.on('uncaughtException', function(error) {
+  console.error('An unexpected error occurred.');
+  debug(error);
+  process.exit(1);
+});
+
+reindex.on('done', function() {
+  process.exit();
+});
+
+reindex.on('error', function(error) {
+  console.error(error);
+  process.exit(1);
+});
+
+if (argv.verbose) {
+  reindex.on('message', function(message) {
+    console.log(message);
+  });
+}
+
+reindex(options);

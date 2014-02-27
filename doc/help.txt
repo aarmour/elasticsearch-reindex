@@ -1,0 +1,17 @@
+Usage: reindex [options] index [index]
+
+Description:
+
+  Reindex an ElasticSearch index.
+
+Options:
+
+  -h, --help                       Output usage information.
+  -v, --version                    Output the version number.
+  --host=HOST[,HOST]               The source and destination hosts
+                                   (default is http://localhost:9200).
+  -m, --max-retries=INTEGER        How many times the client should try to reconnect
+                                   after a failed connection.
+  -t, --request-timeout=INTEGER    Number of milliseconds before a request will be
+                                   aborted and retried.
+  --verbose                        Output additional information during execution.

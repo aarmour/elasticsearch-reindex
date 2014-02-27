@@ -1,0 +1,35 @@
+{
+  "name": "elasticsearch-reindex",
+  "version": "0.1.0",
+  "description": "A simple tool for re-indexing ElasticSearch indices.",
+  "author": {
+    "name": "Adam Armour",
+    "email": "adam.armour@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aarmour/elasticsearch-reindex"
+  },
+  "licenses": [
+    {
+      "type": "WTFPL"
+    }
+  ],
+  "bin": {
+    "reindex": "bin/reindex"
+  },
+  "dependencies": {
+    "async": "~0.2.10",
+    "debug": "~0.7.4",
+    "elasticsearch": "~1.3.0",
+    "optimist": "~0.6.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.0",
+    "jshint-stylish": "~0.1.3",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.2.0"
+  }
+}
