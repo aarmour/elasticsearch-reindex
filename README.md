@@ -6,7 +6,7 @@ A simple tool for re-indexing ElasticSearch indices.
 
 ```
 $ npm install -g elasticsearch-reindex
-$ reindex help
+$ reindex --help
 ```
 
 ## Contributing
