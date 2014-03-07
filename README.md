@@ -5,7 +5,7 @@ A simple tool for re-indexing ElasticSearch indices.
 ## Getting Started
 
 ```
-$ npm install -g elasticsearch-reindex
+$ npm install -g git+https://github.com/aarmour/elasticsearch-reindex.git
 $ reindex --help
 ```
 
