@@ -14,4 +14,6 @@ Options:
                                    after a failed connection.
   -t, --request-timeout=INTEGER    Number of milliseconds before a request will be
                                    aborted and retried.
+  -s, --size=INTEGER               The maximum number of hits per shard to return in
+                                   each query.
   --verbose                        Output additional information during execution.

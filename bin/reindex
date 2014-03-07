@@ -10,6 +10,7 @@ var argv = require('optimist')
     .default('host', 'http://localhost:9200')
     .alias('m', 'max-retries')
     .alias('t', 'request-timeout')
+    .alias('s', 'size')
     .boolean('verbose')
     .argv;
 
@@ -42,6 +43,10 @@ if (argv.host) {
   var hosts = argv.host.split(',');
   options.srcHost = hosts[0];
   options.dstHost = hosts[1];
+}
+
+if (argv.size) {
+  options.size = argv.size
 }
 
 debug(JSON.stringify(options));
